@@ -1,3 +1,20 @@
+function calculateTax() {
+    let inheritanceAmount = parseFloat(document.getElementById("inheritance").value);
+    let exemptAmount = 13330000; // 免稅額
+    let taxableAmount = inheritanceAmount - exemptAmount;
+    let tax = 0;
+
+    if (taxableAmount <= 56210000) {
+        tax = taxableAmount * 0.10;
+    } else if (taxableAmount <= 124210000) {
+        tax = 5621000 + (taxableAmount - 56210000) * 0.15;
+    } else {
+        tax = 14025000 + (taxableAmount - 124210000) * 0.20;
+    }
+
+    document.getElementById("result").innerHTML = 
+        `應稅遺產額：${taxableAmount.toLocaleString()} 元<br>應繳稅額：${tax.toLocaleString()} 元`;
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
